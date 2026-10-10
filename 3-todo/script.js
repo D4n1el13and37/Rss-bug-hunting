@@ -12,10 +12,14 @@ let nextId = 1;
 
 function addTask() {
   const text = input.value;
-  errorEl.hidden = true;
-  tasks.push({ id: nextId++, text: text, done: false });
-  input.value = "";
-  render();
+  if(text.trim().length) {
+    tasks.push({ id: nextId++, text: text, done: false });
+    errorEl.hidden = true;
+    input.value = "";
+    render();
+  } else {
+    errorEl.hidden = false;
+  }
 }
 
 function toggleTask(id) {
