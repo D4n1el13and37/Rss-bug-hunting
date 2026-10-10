@@ -39,7 +39,12 @@ function clearCompleted() {
 }
 
 function getVisibleTasks() {
-  return tasks;
+  const map = {
+    'all': tasks,
+    'active': tasks.filter(({done}) => !done),
+    'done': tasks.filter(({done}) => done),
+  };
+  return map[currentFilter];
 }
 
 function updateCounter() {
