@@ -17,7 +17,7 @@ const grid = document.getElementById("grid");
 const countEl = document.getElementById("count");
 
 function getFiltered() {
-  let result = products;
+  let result = [...products];
   const search = searchInput.value;
   const category = categorySelect.value;
   const sort = sortSelect.value;
@@ -60,8 +60,13 @@ searchInput.addEventListener("input", render);
 categorySelect.addEventListener("change", render);
 sortSelect.addEventListener("change", render);
 
-resetBtn.addEventListener("click", () => {
-  searchInput.value = "";
-});
+const resetState = () => {
+  searchInput.value = '';
+  categorySelect.value = 'all';
+  sortSelect.value = 'default';
+  render();
+}
+
+resetBtn.addEventListener("click", resetState);
 
 render();
