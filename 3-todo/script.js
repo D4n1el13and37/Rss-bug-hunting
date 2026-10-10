@@ -46,9 +46,14 @@ function updateCounter() {
   counter.textContent = "Активных задач: " + tasks.length;
 }
 
+function clearList() {
+  list.textContent = '';
+}
+
 function render() {
+  clearList();
   const visible = getVisibleTasks();
-  for (let i = 0; i <= visible.length; i++) {
+  for (let i = 0; i < visible.length; i++) {
     const task = visible[i];
     const li = document.createElement("li");
     li.className = "task";
