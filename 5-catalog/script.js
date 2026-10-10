@@ -39,7 +39,12 @@ function getFiltered() {
   return result;
 }
 
+const clearList = () => {
+  grid.textContent = '';
+}
+
 function render() {
+  clearList();
   const items = getFiltered();
   items.forEach((p) => {
     const card = document.createElement("div");
